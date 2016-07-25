@@ -91,10 +91,12 @@ int test2 (double delta_u, double delta_v, int32_t lens_index, double aper_width
   //
   //double *buffer_write_double_info = (double*)malloc(8*sizeof(double));
   double delta_at_len_index_u = (delta_u/33)*lens_index; 
+  double delta_at_len_index_v = (delta_v/33)*lens_index; 
   double lens_radius = lens_geo_radius_u(delta_u, delta_v);
   double curved_surface_y = lens_geo_lens_center(delta_u, delta_v)+aperture_height;
   //fwrite (&buffer_write_double_info, sizeof(double),8, pFile);
-  fwrite (&delta_at_len_index, sizeof(double),1, pFile);
+  fwrite (&delta_at_len_index_u, sizeof(double),1, pFile);
+  fwrite (&delta_at_len_index_v, sizeof(double),1, pFile);
   fwrite (&lens_radius, sizeof(double),1, pFile);
   fwrite (&curved_surface_y, sizeof(double),1, pFile);
   fwrite (&sensor_width, sizeof(double),1, pFile);
